@@ -21,6 +21,8 @@ public class P1 {
             }
         }
 
+        sc.close();
+
         int positive = 0;
         int negative = 0;
 
