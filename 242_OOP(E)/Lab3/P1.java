@@ -14,6 +14,11 @@ public class P1 {
         for (int i = 0; i < 10; i++) {
             System.out.println("Enter input " + (i + 1) + ": ");
             arr[i] = sc.nextInt();
+            if (arr[i] == 0) {
+                System.out.println("Input cannot be 0. Please enter a non-zero input.");
+                i--;
+                
+            }
         }
 
         int positive = 0;
@@ -38,7 +43,7 @@ public class P1 {
 
         System.out.println("Sum of the inputs: " + sum);
 
-        int average = sum / 10;
+        double average = sum / 10;
         System.out.println("Average of the inputs: " + average);
 
 
