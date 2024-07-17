@@ -46,7 +46,7 @@ class Book {
         this.count = count;
     }
     public String toString(){
-        return "ISBN: "+ISBN+ ", Title: "+ bookTitle+ ", Pages: "+numberOfPages + ", Count: "+count;
+        return "ISBN Number is : "+ISBN+ ", The Title is: "+ bookTitle+ ", Pages Number : "+numberOfPages + ", Counting: "+count;
     }
 
     public int compareTo(Book other){
