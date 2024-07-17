@@ -1,4 +1,4 @@
-package OOP_LAB.Assignment_2;
+//package Assignment_2;
 
 public class Fraction {
     private int numerator;
