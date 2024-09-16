@@ -20,367 +20,374 @@ public class Main {
             int choice = input.nextInt();
 
             if (choice == 0) {
-                break;
+            break;
             }
 
-            if (choice == 1) {
+            switch (choice) {
+            case 1:
                 System.out.println();
                 System.out.println("""
-                        a. Add a student
-                        b. Add a faculty
-                        c. Add a course
-                        d. Add a student to a course
-                        e. Add a faculty to a course
-                        x. Return to main menu""");
+                    a. Add a student
+                    b. Add a faculty
+                    c. Add a course
+                    d. Add a student to a course
+                    e. Add a faculty to a course
+                    x. Return to main menu""");
 
                 System.out.print("Enter any option: ");
                 char choice1 = input.next().charAt(0);
 
                 if (choice1 == 'x') {
-                    continue;
+                continue;
 
                 } else if (choice1 == 'a') {
-                    System.out.println("ID: ");
-                    int id = input.nextInt();
-                    input.nextLine();
+                System.out.println("ID: ");
+                int id = input.nextInt();
+                input.nextLine();
 
-                    System.out.println("Name: ");
-                    String name = input.nextLine();
+                System.out.println("Name: ");
+                String name = input.nextLine();
 
 
-                    System.out.println("CGPA: ");
-                    double cg = input.nextDouble();
+                System.out.println("CGPA: ");
+                double cg = input.nextDouble();
 
-                    Student s = new Student(id, name, cg);
-                    addAStudent(s, s.getStudentId());
+                Student s = new Student(id, name, cg);
+                addAStudent(s, s.getStudentId());
 
                 } else if (choice1 == 'b') {
-                    System.out.println("ID: ");
-                    int id = input.nextInt();
-                    input.nextLine();
+                System.out.println("ID: ");
+                int id = input.nextInt();
+                input.nextLine();
 
-                    System.out.println("Name: ");
-                    String name = input.nextLine();
+                System.out.println("Name: ");
+                String name = input.nextLine();
 
-                    System.out.println("Position: ");
-                    String position = input.next();
+                System.out.println("Position: ");
+                String position = input.next();
 
-                    Faculty f = new Faculty(id, name, position);
-                    addAFaculty(f, f.getFacultyId());
+                Faculty f = new Faculty(id, name, position);
+                addAFaculty(f, f.getFacultyId());
 
                 } else if (choice1 == 'c') {
-                    System.out.println("Course code: ");
-                    String code = input.next();
-                    input.nextLine();
+                System.out.println("Course code: ");
+                String code = input.next();
+                input.nextLine();
 
-                    System.out.println("Course title: ");
-                    String name = input.nextLine();
+                System.out.println("Course title: ");
+                String name = input.nextLine();
 
-                    System.out.println("Credit: ");
-                    double cred = input.nextDouble();
+                System.out.println("Credit: ");
+                double cred = input.nextDouble();
 
-                    Course c = new Course(code, name, cred);
-                    addACourse(c, c.getCourseCode());
+                Course c = new Course(code, name, cred);
+                addACourse(c, c.getCourseCode());
 
                 } else if (choice1 == 'd') {
-                    System.out.println("Course code: ");
-                    String courseCode = input.next();
-                    input.nextLine();
+                System.out.println("Course code: ");
+                String courseCode = input.next();
+                input.nextLine();
 
-                    System.out.println("Student ID: ");
-                    int sid = input.nextInt();
+                System.out.println("Student ID: ");
+                int sid = input.nextInt();
 
-                    addAStudentToACourse(courseCode, sid);
+                addAStudentToACourse(courseCode, sid);
 
                 } else if (choice1 == 'e') {
-                    System.out.println("Course code: ");
-                    String courseCode = input.next();
-                    input.nextLine();
+                System.out.println("Course code: ");
+                String courseCode = input.next();
+                input.nextLine();
 
-                    System.out.println("Faculty ID: ");
-                    int fid = input.nextInt();
+                System.out.println("Faculty ID: ");
+                int fid = input.nextInt();
 
-                    addAFacultyToACourse(courseCode, fid);
+                addAFacultyToACourse(courseCode, fid);
                 } else {
-                    System.out.println("\nEnter valid input");
+                System.out.println("\nEnter valid input");
                 }
+                break;
 
-            } else if (choice == 2) {
+            case 2:
                 System.out.println();
                 System.out.println("""
-                        a. Delete a student
-                        b. Delete a faculty
-                        c. Delete a course
-                        d. Delete a student to a course
-                        e. Delete a faculty to a course
-                        x. Return to main menu""");
+                    a. Delete a student
+                    b. Delete a faculty
+                    c. Delete a course
+                    d. Delete a student to a course
+                    e. Delete a faculty to a course
+                    x. Return to main menu""");
 
                 System.out.print("Enter any option: ");
                 char choice2 = input.next().charAt(0);
 
                 if (choice2 == 'x') {
-                    continue;
+                continue;
 
                 } else if (choice2 == 'a') {
-                    System.out.println("Enter student id that you want to delete: ");
-                    int sid = input.nextInt();
-                    deleteAStudent(sid);
+                System.out.println("Enter student id that you want to delete: ");
+                int sid = input.nextInt();
+                deleteAStudent(sid);
 
                 } else if (choice2 == 'b') {
-                    System.out.println("Enter course code that you want to delete: ");
-                    String courseCode = input.next();
-                    deleteACourse(courseCode);
+                System.out.println("Enter course code that you want to delete: ");
+                String courseCode = input.next();
+                deleteACourse(courseCode);
 
                 } else if (choice2 == 'c') {
-                    System.out.println("Enter faculty id that you want to delete: ");
-                    int fId = input.nextInt();
-                    deleteAFaculty(fId);
+                System.out.println("Enter faculty id that you want to delete: ");
+                int fId = input.nextInt();
+                deleteAFaculty(fId);
 
                 } else if (choice2 == 'd') {
-                    System.out.println("Enter course code to delete student from course: ");
-                    String cCode = input.next();
-                    System.out.println("Enter student id to delete student from course: ");
-                    int sID = input.nextInt();
-                    deleteAStudentFromCourse(cCode, sID);
+                System.out.println("Enter course code to delete student from course: ");
+                String cCode = input.next();
+                System.out.println("Enter student id to delete student from course: ");
+                int sID = input.nextInt();
+                deleteAStudentFromCourse(cCode, sID);
 
                 } else if (choice2 == 'e') {
-                    System.out.println("Enter course code to remove a faculty: ");
-                    String cCode = input.next();
-                    deleteAFacultyFromCourse(cCode);
+                System.out.println("Enter course code to remove a faculty: ");
+                String cCode = input.next();
+                deleteAFacultyFromCourse(cCode);
                 } else {
-                    System.out.println("\nEnter valid input");
+                System.out.println("\nEnter valid input");
                 }
+                break;
 
-            } else if (choice == 3) {
+            case 3:
                 System.out.println();
                 System.out.println("""
-                        a. Update a student
-                        b. Update a faculty
-                        c. Update a course
-                        d. Update a student to a course
-                        e. Update a faculty to a course
-                        x. Return to main menu""");
+                    a. Update a student
+                    b. Update a faculty
+                    c. Update a course
+                    d. Update a student to a course
+                    e. Update a faculty to a course
+                    x. Return to main menu""");
 
                 System.out.print("Enter any option: ");
                 char choice3 = input.next().charAt(0);
 
                 if (choice3 == 'x') {
-                    continue;
+                continue;
 
                 } else if (choice3 == 'a') {
-                    System.out.println("Enter student id to update info: ");
-                    int sId = input.nextInt();
-                    updateAStudent(sId);
+                System.out.println("Enter student id to update info: ");
+                int sId = input.nextInt();
+                updateAStudent(sId);
 
                 } else if (choice3 == 'b') {
-                    System.out.println("Enter faculty id to update info: ");
-                    int fId = input.nextInt();
-                    updateAFaculty(fId);
+                System.out.println("Enter faculty id to update info: ");
+                int fId = input.nextInt();
+                updateAFaculty(fId);
 
                 } else if (choice3 == 'c') {
-                    System.out.println("Enter course code to update info: ");
-                    String cCode = input.next();
-                    updateACourse(cCode);
+                System.out.println("Enter course code to update info: ");
+                String cCode = input.next();
+                updateACourse(cCode);
 
                 } else if (choice3 == 'd') {
-                    System.out.println("Enter course code to update a student from a course: ");
-                    String cCode = input.next();
+                System.out.println("Enter course code to update a student from a course: ");
+                String cCode = input.next();
 
-                    System.out.println("Enter student id to update a student from a course: ");
-                    int sId = input.nextInt();
-                    updateAStudentToACourse(cCode, sId);
+                System.out.println("Enter student id to update a student from a course: ");
+                int sId = input.nextInt();
+                updateAStudentToACourse(cCode, sId);
 
                 } else if (choice3 == 'e') {
-                    System.out.println("Enter course code to update a faculty to a course: ");
-                    String cCode = input.next();
-                    updateAFacultyToACourse(cCode);
+                System.out.println("Enter course code to update a faculty to a course: ");
+                String cCode = input.next();
+                updateAFacultyToACourse(cCode);
 
                 } else {
-                    System.out.println("\nEnter valid input");
+                System.out.println("\nEnter valid input");
                 }
+                break;
 
-            } else if (choice == 4) {
+            case 4:
                 System.out.println();
                 System.out.println("""
-                        a. Print all students
-                        b. Print all courses
-                        c. Print all faculties
-                        d. Print information of a student
-                        e. Print information of a course
-                        f. Print information of a faculty
-                        g. Print student list and faculty information of a course
-                        h. Print courses taken by a student
-                        x. Return to main menu""");
+                    a. Print all students
+                    b. Print all courses
+                    c. Print all faculties
+                    d. Print information of a student
+                    e. Print information of a course
+                    f. Print information of a faculty
+                    g. Print student list and faculty information of a course
+                    h. Print courses taken by a student
+                    x. Return to main menu""");
 
                 System.out.print("Enter any option: ");
                 char choice4 = input.next().charAt(0);
 
                 if (choice4 == 'x') {
-                    continue;
+                continue;
 
                 } else if (choice4 == 'a') {
-                    printAllStudent();
+                printAllStudent();
 
                 } else if (choice4 == 'b') {
-                    printAllCourse();
+                printAllCourse();
 
                 } else if (choice4 == 'c') {
-                    printAllFaculty();
+                printAllFaculty();
 
                 } else if (choice4 == 'd') {
-                    System.out.print("Enter student id to see her/him information: ");
-                    int stuId = input.nextInt();
-                    printInfoOfAStudent(stuId);
+                System.out.print("Enter student id to see her/him information: ");
+                int stuId = input.nextInt();
+                printInfoOfAStudent(stuId);
 
                 } else if (choice4 == 'e') {
-                    System.out.print("Enter course code to see its information: ");
-                    String courseCode = input.next();
-                    printInfoOfACourse(courseCode);
+                System.out.print("Enter course code to see its information: ");
+                String courseCode = input.next();
+                printInfoOfACourse(courseCode);
 
                 } else if (choice4 == 'f') {
-                    System.out.print("Enter faculty id to see her/him information: ");
-                    int fId = input.nextInt();
-                    printInfoOfAFaculty(fId);
+                System.out.print("Enter faculty id to see her/him information: ");
+                int fId = input.nextInt();
+                printInfoOfAFaculty(fId);
 
                 } else if (choice4 == 'g') {
-                    printStudentListAndFacultyInfo();
+                printStudentListAndFacultyInfo();
 
                 } else if (choice4 == 'h') {
-                    System.out.println("Enter student id to see her/him courses: ");
-                    int sid = input.nextInt();
-                    printCourseTakenByStudent(sid);
+                System.out.println("Enter student id to see her/him courses: ");
+                int sid = input.nextInt();
+                printCourseTakenByStudent(sid);
 
                 } else {
-                    System.out.println("\nEnter valid input");
+                System.out.println("\nEnter valid input");
                 }
+                break;
 
-            } else if (choice == 5) {
+            case 5:
                 System.out.println();
                 System.out.println("""
-                        a. Search a students
-                        b. Search a course
-                        c. Search a faculty
-                        d. Search whether a student takes a course
-                        e. Search whether a faculty teaches a course
-                        f. Search courses taken by a student
-                        g. Search course taught by a faculty
-                        x. Return to main menu""");
+                    a. Search a students
+                    b. Search a course
+                    c. Search a faculty
+                    d. Search whether a student takes a course
+                    e. Search whether a faculty teaches a course
+                    f. Search courses taken by a student
+                    g. Search course taught by a faculty
+                    x. Return to main menu""");
 
                 System.out.print("Enter any option: ");
                 char choice5 = input.next().charAt(0);
 
                 if (choice5 == 'x') {
-                    continue;
+                continue;
 
                 } else if (choice5 == 'a') {
-                    System.out.println("Enter student id to search: ");
-                    int sId = input.nextInt();
-                    Student ans = searchStudent(sId);
-                    if (ans != null) {
-                        System.out.println("Student id: " + ans.getStudentId());
-                        System.out.println("Student name: " + ans.getStudentName());
-                        System.out.println("Student cgpa: " + ans.getStudentCgpa());
-                        System.out.println();
-                    } else {
-                        System.out.println("Student not found");
-                    }
-
-                } else if (choice5 == 'b') {
-                    System.out.println("Enter course code to search: ");
-                    String cCode = input.next();
-                    Course ans = searchCourse(cCode);
-                    if (ans != null) {
-                        System.out.println("Course code: " + ans.getCourseCode());
-                        System.out.println("Course title: " + ans.getCourseTitle());
-                        System.out.println("Course credit: " + ans.getCourseCredit());
-                        System.out.println();
-                    } else {
-                        System.out.println("Course not found");
-                    }
-
-                } else if (choice5 == 'c') {
-                    System.out.println("Enter faculty id to search: ");
-                    int fId = input.nextInt();
-                    Faculty ans = searchFaculty(fId);
-                    if (ans != null) {
-                        System.out.println("Faculty id: " + ans.getFacultyId());
-                        System.out.println("Faculty name: " + ans.getFacultyName());
-                        System.out.println("Faculty position: " + ans.getFacultyPosition());
-                        System.out.println();
-                    } else {
-                        System.out.println("Faculty not found");
-                    }
-
-                } else if (choice5 == 'd') {
-                    System.out.println("Enter student id to search whether a student takes a course: ");
-                    int sId = input.nextInt();
-
-                    System.out.println("Enter course code to search whether a student takes a course: ");
-                    String cCode = input.next();
-
-                    boolean ans = whetherAStudentTakeACourse(sId, cCode);
-
-                    if (ans) {
-                        System.out.println("Yes student take this course");
-                    } else {
-                        System.out.println("No student found");
-                    }
-
-                } else if (choice5 == 'e') {
-                    System.out.println("Enter faculty id to search whether a student takes a course: ");
-                    int fId = input.nextInt();
-
-                    System.out.println("Enter course code to search whether a student takes a course: ");
-                    String cCode = input.next();
-
-                    boolean ans = whetherAFacultyTeachesACourse(fId, cCode);
-
-                    if (ans) {
-                        System.out.println("Yes faculty take this course");
-                    } else {
-                        System.out.println("No faculty found");
-                    }
-
-                } else if (choice5 == 'f') {
-                    System.out.println("Enter student id to search courses taken by a student: ");
-                    int sId = input.nextInt();
-                    ArrayList<Course> ans = searchCoursesTakenByStudent(sId);
-                    if (!ans.isEmpty()) {
-                        System.out.println("These courses are taken by student: ");
-                        for (Course i : ans) {
-                            System.out.println("Course code: " + i.getCourseCode());
-                            System.out.println("Course title: " + i.getCourseTitle());
-                            System.out.println("Course credit: " + i.getCourseCredit());
-                            System.out.println();
-                        }
-                    } else {
-                        System.out.println("No course found");
-                    }
-
-                } else if (choice5 == 'g') {
-                    System.out.println("Enter faculty id to search course taught by a faculty: ");
-                    int fId = input.nextInt();
-                    ArrayList<Course> ans = searchCoursesTaughtByFaculty(fId);
-                    if (!ans.isEmpty()) {
-                        System.out.println("These course are taught by faculty: ");
-                        for (Course j : ans) {
-                            System.out.println("Course code: " + j.getCourseCode());
-                            System.out.println("Course title: " + j.getCourseTitle());
-                            System.out.println("Course credit: " + j.getCourseCredit());
-                            System.out.println();
-                        }
-                    } else {
-                        System.out.println("No faculty found");
-                    }
+                System.out.println("Enter student id to search: ");
+                int sId = input.nextInt();
+                Student ans = searchStudent(sId);
+                if (ans != null) {
+                    System.out.println("Student id: " + ans.getStudentId());
+                    System.out.println("Student name: " + ans.getStudentName());
+                    System.out.println("Student cgpa: " + ans.getStudentCgpa());
+                    System.out.println();
                 } else {
-                    System.out.println("\nEnter valid input");
+                    System.out.println("Student not found");
                 }
 
-            } else {
+                } else if (choice5 == 'b') {
+                System.out.println("Enter course code to search: ");
+                String cCode = input.next();
+                Course ans = searchCourse(cCode);
+                if (ans != null) {
+                    System.out.println("Course code: " + ans.getCourseCode());
+                    System.out.println("Course title: " + ans.getCourseTitle());
+                    System.out.println("Course credit: " + ans.getCourseCredit());
+                    System.out.println();
+                } else {
+                    System.out.println("Course not found");
+                }
+
+                } else if (choice5 == 'c') {
+                System.out.println("Enter faculty id to search: ");
+                int fId = input.nextInt();
+                Faculty ans = searchFaculty(fId);
+                if (ans != null) {
+                    System.out.println("Faculty id: " + ans.getFacultyId());
+                    System.out.println("Faculty name: " + ans.getFacultyName());
+                    System.out.println("Faculty position: " + ans.getFacultyPosition());
+                    System.out.println();
+                } else {
+                    System.out.println("Faculty not found");
+                }
+
+                } else if (choice5 == 'd') {
+                System.out.println("Enter student id to search whether a student takes a course: ");
+                int sId = input.nextInt();
+
+                System.out.println("Enter course code to search whether a student takes a course: ");
+                String cCode = input.next();
+
+                boolean ans = whetherAStudentTakeACourse(sId, cCode);
+
+                if (ans) {
+                    System.out.println("Yes student take this course");
+                } else {
+                    System.out.println("No student found");
+                }
+
+                } else if (choice5 == 'e') {
+                System.out.println("Enter faculty id to search whether a student takes a course: ");
+                int fId = input.nextInt();
+
+                System.out.println("Enter course code to search whether a student takes a course: ");
+                String cCode = input.next();
+
+                boolean ans = whetherAFacultyTeachesACourse(fId, cCode);
+
+                if (ans) {
+                    System.out.println("Yes faculty take this course");
+                } else {
+                    System.out.println("No faculty found");
+                }
+
+                } else if (choice5 == 'f') {
+                System.out.println("Enter student id to search courses taken by a student: ");
+                int sId = input.nextInt();
+                ArrayList<Course> ans = searchCoursesTakenByStudent(sId);
+                if (!ans.isEmpty()) {
+                    System.out.println("These courses are taken by student: ");
+                    for (Course i : ans) {
+                    System.out.println("Course code: " + i.getCourseCode());
+                    System.out.println("Course title: " + i.getCourseTitle());
+                    System.out.println("Course credit: " + i.getCourseCredit());
+                    System.out.println();
+                    }
+                } else {
+                    System.out.println("No course found");
+                }
+
+                } else if (choice5 == 'g') {
+                System.out.println("Enter faculty id to search course taught by a faculty: ");
+                int fId = input.nextInt();
+                ArrayList<Course> ans = searchCoursesTaughtByFaculty(fId);
+                if (!ans.isEmpty()) {
+                    System.out.println("These course are taught by faculty: ");
+                    for (Course j : ans) {
+                    System.out.println("Course code: " + j.getCourseCode());
+                    System.out.println("Course title: " + j.getCourseTitle());
+                    System.out.println("Course credit: " + j.getCourseCredit());
+                    System.out.println();
+                    }
+                } else {
+                    System.out.println("No faculty found");
+                }
+                } else {
+                System.out.println("\nEnter valid input");
+                }
+                break;
+
+            default:
                 System.out.println("Enter valid input");
+                break;
             }
         }
-    } // End of public static void main
+        } // End of public static void main
 
     //---------------------------------------------------*****----------------------------------------------------------
     // add new student
