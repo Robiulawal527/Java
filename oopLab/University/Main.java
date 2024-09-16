@@ -19,7 +19,7 @@ public class Main {
             System.out.println("4. Print ");
             System.out.println("5. Search");
             System.out.println("0. Exit");
-            
+
             System.out.println();
             System.out.println("*************************University Management System**********************************");
 
