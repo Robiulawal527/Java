@@ -2,17 +2,21 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    public static ArrayList<Student> studentsMainList = new ArrayList<>();
-    public static ArrayList<Faculty> facultiesMainList = new ArrayList<>();
-    public static ArrayList<Course> coursesMainList = new ArrayList<>();
+    public static ArrayList<Student> studentsList = new ArrayList<>();
+    public static ArrayList<Faculty> facultiesList = new ArrayList<>();
+    public static ArrayList<Course> coursesList = new ArrayList<>();
 
     public static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
         while (true) {
-            System.out.println();
-            System.out.println("1. Add\n2. Delete\n3. Update\n4. Print\n5. Search\n0. Exit");
+
+            System.out.println("University Management System");
+
+            System.out.println("1. Add student or faculty or course or student to a course or faculty to a course.\n2. Delete\n3. Update\n4. Print\n5. Search\n0. Exit");
+
             System.out.print("Enter your choice: ");
+
             int choice = input.nextInt();
 
             if (choice == 0) {
@@ -382,14 +386,14 @@ public class Main {
     // add new student
     public static void addAStudent(Student s, int sId) {
         boolean flag = true;
-        for (Student e : studentsMainList) {
+        for (Student e : studentsList) {
             if (e.equals(s) || e.getStudentId() == sId) {
                 flag = false;
                 break;
             }
         }
         if (flag) {
-            studentsMainList.add(s);
+            studentsList.add(s);
             System.out.println("Student added!");
         } else {
             System.out.println("Already exists! or student ID can not be same");
@@ -399,14 +403,14 @@ public class Main {
     // add new faculty
     public static void addAFaculty(Faculty f, int fID) {
         boolean flag = true;
-        for (Faculty f1 : facultiesMainList) {
+        for (Faculty f1 : facultiesList) {
             if (f1.equals(f) || f1.getFacultyId() == fID) {
                 flag = false;
                 break;
             }
         }
         if (flag) {
-            facultiesMainList.add(f);
+            facultiesList.add(f);
             System.out.println("Faculty added");
         } else {
             System.out.println("Already exist or faculty ID can not be same");
@@ -416,14 +420,14 @@ public class Main {
     // add new course
     public static void addACourse(Course c, String cCode) {
         boolean flag = true;
-        for (Course c1 : coursesMainList) {
+        for (Course c1 : coursesList) {
             if (c1.equals(c) || c1.getCourseCode().equals(cCode)) {
                 flag = false;
                 break;
             }
         }
         if (flag) {
-            coursesMainList.add(c);
+            coursesList.add(c);
             System.out.println("Course added");
         } else {
             System.out.println("Already exist or course Code can not be same");
@@ -433,20 +437,20 @@ public class Main {
     // add a student to a course
     public static void addAStudentToACourse(String courseCode, int sid) {
         int courseIndex = -1, studentIndex = -1;
-        for (int i = 0; i < coursesMainList.size(); i++) {
-            if (courseCode.equals(coursesMainList.get(i).getCourseCode())) {
+        for (int i = 0; i < coursesList.size(); i++) {
+            if (courseCode.equals(coursesList.get(i).getCourseCode())) {
                 courseIndex = i;
                 break;
             }
         }
-        for (int i = 0; i < studentsMainList.size(); i++) {
-            if (sid == studentsMainList.get(i).getStudentId()) {
+        for (int i = 0; i < studentsList.size(); i++) {
+            if (sid == studentsList.get(i).getStudentId()) {
                 studentIndex = i;
                 break;
             }
         }
         if (studentIndex != -1 && courseIndex != -1) {
-            coursesMainList.get(courseIndex).addStudent(studentsMainList.get(studentIndex));
+            coursesList.get(courseIndex).addStudent(studentsList.get(studentIndex));
             System.out.println("Successfully add student to a course");
         } else {
             System.out.println("Course or student not found");
@@ -456,20 +460,20 @@ public class Main {
     // add a faculty to a course
     public static void addAFacultyToACourse(String courseCode, int facultyID) {
         int courseIndex = -1, facultyIndex = -1;
-        for (int i = 0; i < coursesMainList.size(); i++) {
-            if (courseCode.equals(coursesMainList.get(i).getCourseCode())) {
+        for (int i = 0; i < coursesList.size(); i++) {
+            if (courseCode.equals(coursesList.get(i).getCourseCode())) {
                 courseIndex = i;
                 break;
             }
         }
-        for (int i = 0; i < facultiesMainList.size(); i++) {
-            if (facultyID == facultiesMainList.get(i).getFacultyId()) {
+        for (int i = 0; i < facultiesList.size(); i++) {
+            if (facultyID == facultiesList.get(i).getFacultyId()) {
                 facultyIndex = i;
                 break;
             }
         }
         if (courseIndex != -1 && facultyIndex != -1) {
-            coursesMainList.get(courseIndex).addFaculty(facultiesMainList.get(facultyIndex));
+            coursesList.get(courseIndex).addFaculty(facultiesList.get(facultyIndex));
         } else {
             System.out.println("Course or faculty not found");
         }
@@ -479,14 +483,14 @@ public class Main {
     // delete a student
     public static void deleteAStudent(int sId) {
         int studentIndex = -1;
-        for (int i = 0; i < studentsMainList.size(); i++) {
-            if (studentsMainList.get(i).getStudentId() == sId) {
+        for (int i = 0; i < studentsList.size(); i++) {
+            if (studentsList.get(i).getStudentId() == sId) {
                 studentIndex = i;
                 break;
             }
         }
         if (studentIndex != -1) {
-            studentsMainList.remove(studentIndex);
+            studentsList.remove(studentIndex);
             System.out.println("Successfully remove a student");
         } else {
             System.out.println("Student not found");
@@ -496,13 +500,13 @@ public class Main {
     // delete a course
     public static void deleteACourse(String cCode) {
         int courseIndex = -1;
-        for (int i = 0; i < coursesMainList.size(); i++) {
-            if (coursesMainList.get(i).getCourseCode().equals(cCode)) {
+        for (int i = 0; i < coursesList.size(); i++) {
+            if (coursesList.get(i).getCourseCode().equals(cCode)) {
                 courseIndex = i;
             }
         }
         if (courseIndex != -1) {
-            coursesMainList.remove(courseIndex);
+            coursesList.remove(courseIndex);
             System.out.println("Successfully remove a course");
         } else {
             System.out.println("Course not found");
@@ -512,14 +516,14 @@ public class Main {
     // delete a faculty
     public static void deleteAFaculty(int fId) {
         int facultyIndex = -1;
-        for (int i = 0; i < facultiesMainList.size(); i++) {
-            if (facultiesMainList.get(i).getFacultyId() == fId) {
+        for (int i = 0; i < facultiesList.size(); i++) {
+            if (facultiesList.get(i).getFacultyId() == fId) {
                 facultyIndex = i;
                 break;
             }
         }
         if (facultyIndex != -1) {
-            facultiesMainList.remove(facultyIndex);
+            facultiesList.remove(facultyIndex);
             System.out.println("Successfully remove a faculty");
         } else {
             System.out.println("Faculty not found");
@@ -529,14 +533,14 @@ public class Main {
     // delete a student from a course
     public static void deleteAStudentFromCourse(String courseCode, int studentId) {
         int courseIndex = -1;
-        for (int i = 0; i < coursesMainList.size(); i++) {
-            if (coursesMainList.get(i).getCourseCode().equals(courseCode)) {
+        for (int i = 0; i < coursesList.size(); i++) {
+            if (coursesList.get(i).getCourseCode().equals(courseCode)) {
                 courseIndex = i;
                 break;
             }
         }
         if (courseIndex != -1) {
-            Course c = coursesMainList.get(courseIndex);
+            Course c = coursesList.get(courseIndex);
             ArrayList<Student> studentList = c.getStudentList();
             int studentIndex = -1;
             for (int i = 0; i < studentList.size(); i++) {
@@ -560,14 +564,14 @@ public class Main {
     // delete a faculty from a course
     public static void deleteAFacultyFromCourse(String courseCode) {
         int courseIndex = -1;
-        for (int i = 0; i < coursesMainList.size(); i++) {
-            if (coursesMainList.get(i).getCourseCode().equals(courseCode)) {
+        for (int i = 0; i < coursesList.size(); i++) {
+            if (coursesList.get(i).getCourseCode().equals(courseCode)) {
                 courseIndex = i;
                 break;
             }
         }
         if (courseIndex != -1) {
-            Course c = coursesMainList.get(courseIndex);
+            Course c = coursesList.get(courseIndex);
             Faculty faculty = c.getFaculty();
             if (faculty != null) {
                 c.dropFaculty();
@@ -584,14 +588,14 @@ public class Main {
     // update a student
     public static void updateAStudent(int sID) {
         int studentIndex = -1;
-        for (int i = 0; i < studentsMainList.size(); i++) {
-            if (studentsMainList.get(i).getStudentId() == sID) {
+        for (int i = 0; i < studentsList.size(); i++) {
+            if (studentsList.get(i).getStudentId() == sID) {
                 studentIndex = i;
                 break;
             }
         }
         if (studentIndex != -1) {
-            Student newStudent = studentsMainList.get(studentIndex);
+            Student newStudent = studentsList.get(studentIndex);
 
             System.out.println("Enter student new id: ");
             int newStuId = input.nextInt();
@@ -615,14 +619,14 @@ public class Main {
     // update a course
     public static void updateACourse(String cCode) {
         int courseIndex = -1;
-        for (int i = 0; i < coursesMainList.size(); i++) {
-            if (coursesMainList.get(i).getCourseCode().equals(cCode)) {
+        for (int i = 0; i < coursesList.size(); i++) {
+            if (coursesList.get(i).getCourseCode().equals(cCode)) {
                 courseIndex = i;
                 break;
             }
         }
         if (courseIndex != -1) {
-            Course newCourse = coursesMainList.get(courseIndex);
+            Course newCourse = coursesList.get(courseIndex);
 
             System.out.println("Enter course new code: ");
             String newCCode = input.next();
@@ -646,14 +650,14 @@ public class Main {
     // update a faculty
     public static void updateAFaculty(int fId) {
         int courseIndex = -1;
-        for (int i = 0; i < facultiesMainList.size(); i++) {
-            if (facultiesMainList.get(i).getFacultyId() == fId) {
+        for (int i = 0; i < facultiesList.size(); i++) {
+            if (facultiesList.get(i).getFacultyId() == fId) {
                 courseIndex = i;
                 break;
             }
         }
         if (courseIndex != -1) {
-            Faculty newFaculty = facultiesMainList.get(courseIndex);
+            Faculty newFaculty = facultiesList.get(courseIndex);
 
             System.out.print("Enter faculty new id: ");
             int newFid = input.nextInt();
@@ -677,14 +681,14 @@ public class Main {
     // update a student to a course
     public static void updateAStudentToACourse(String cCode, int sId) {
         int courseIndex = -1;
-        for (int i = 0; i < coursesMainList.size(); i++) {
-            if (coursesMainList.get(i).getCourseCode().equals(cCode)) {
+        for (int i = 0; i < coursesList.size(); i++) {
+            if (coursesList.get(i).getCourseCode().equals(cCode)) {
                 courseIndex = i;
                 break;
             }
         }
         if (courseIndex != -1) {
-            Course c = coursesMainList.get(courseIndex);
+            Course c = coursesList.get(courseIndex);
             ArrayList<Student> newStuList = c.getStudentList();
 
             int studentIndex = -1;
@@ -721,14 +725,14 @@ public class Main {
     // update a faculty to a course
     public static void updateAFacultyToACourse(String cCode) {
         int courseIndex = -1;
-        for (int i = 0; i < coursesMainList.size(); i++) {
-            if (coursesMainList.get(i).getCourseCode().equals(cCode)) {
+        for (int i = 0; i < coursesList.size(); i++) {
+            if (coursesList.get(i).getCourseCode().equals(cCode)) {
                 courseIndex = i;
                 break;
             }
         }
         if (courseIndex != -1) {
-            Course c = coursesMainList.get(courseIndex);
+            Course c = coursesList.get(courseIndex);
             Faculty newFaculty = c.getFaculty();
             if (newFaculty != null) {
 
@@ -756,14 +760,14 @@ public class Main {
     //---------------------------------------------------*****----------------------------------------------------------
     // print all student
     public static void printAllStudent() {
-        for (Student s : studentsMainList) {
+        for (Student s : studentsList) {
             System.out.println(s.toString());
         }
     }
 
     // print all course
     public static void printAllCourse() {
-        for (Course c : coursesMainList) {
+        for (Course c : coursesList) {
             System.out.println("Course code: " + c.getCourseCode());
             System.out.println("Course title: " + c.getCourseTitle());
             System.out.println("Course credit: " + c.getCourseCredit());
@@ -773,14 +777,14 @@ public class Main {
 
     // print all faculty
     public static void printAllFaculty() {
-        for (Faculty f : facultiesMainList) {
+        for (Faculty f : facultiesList) {
             System.out.println(f.toString());
         }
     }
 
     // print information of a student
     public static void printInfoOfAStudent(int sID) {
-        for (Student s : studentsMainList) {
+        for (Student s : studentsList) {
             if (s.getStudentId() == sID) {
                 System.out.println("Student id: " + s.getStudentId());
                 System.out.println("Student name: " + s.getStudentName());
@@ -792,7 +796,7 @@ public class Main {
 
     // print information of a course
     public static void printInfoOfACourse(String cCode) {
-        for (Course c : coursesMainList) {
+        for (Course c : coursesList) {
             if (c.getCourseCode().equals(cCode)) {
                 System.out.println("Course code: " + c.getCourseCode());
                 System.out.println("Course title: " + c.getCourseTitle());
@@ -804,7 +808,7 @@ public class Main {
 
     // print information of a faculty
     public static void printInfoOfAFaculty(int fID) {
-        for (Faculty f : facultiesMainList) {
+        for (Faculty f : facultiesList) {
             if (f.getFacultyId() == fID) {
                 System.out.println("Faculty id: " + f.getFacultyId());
                 System.out.println("Faculty name: " + f.getFacultyName());
@@ -817,7 +821,7 @@ public class Main {
     // print student list and faculty information
     public static void printStudentListAndFacultyInfo() {
         int flag = 0;
-        for (Course c : coursesMainList) {
+        for (Course c : coursesList) {
             System.out.println(c.getStudentList().toString());
             System.out.println();
             Faculty faculty = c.getFaculty();
@@ -836,7 +840,7 @@ public class Main {
 
     // Print courses taken by a student
     public static void printCourseTakenByStudent(int sId) {
-        for (Course c : coursesMainList) {
+        for (Course c : coursesList) {
             ArrayList<Student> studentsList = c.getStudentList();
             for (Student s : studentsList) {
                 if (s.getStudentId() == sId) {
@@ -852,7 +856,7 @@ public class Main {
     //---------------------------------------------------*****----------------------------------------------------------
     // search a student
     public static Student searchStudent(int sId) {
-        for (Student s : studentsMainList) {
+        for (Student s : studentsList) {
             if (s.getStudentId() == sId) {
                 return s;
             }
@@ -862,7 +866,7 @@ public class Main {
 
     // search a course
     public static Course searchCourse(String cCode) {
-        for (Course c : coursesMainList) {
+        for (Course c : coursesList) {
             if (c.getCourseCode().equals(cCode)) {
                 return c;
             }
@@ -872,7 +876,7 @@ public class Main {
 
     // search a faculty
     public static Faculty searchFaculty(int fId) {
-        for (Faculty f : facultiesMainList) {
+        for (Faculty f : facultiesList) {
             if (f.getFacultyId() == fId) {
                 return f;
             }
@@ -912,7 +916,7 @@ public class Main {
     public static ArrayList<Course> searchCoursesTakenByStudent(int sId) {
         ArrayList<Course> coursesTaken = new ArrayList<>();
 
-        for (Course c : coursesMainList) {
+        for (Course c : coursesList) {
             ArrayList<Student> studentsList = c.getStudentList();
 
             for (Student s : studentsList) {
@@ -929,7 +933,7 @@ public class Main {
     public static ArrayList<Course> searchCoursesTaughtByFaculty(int fId) {
         ArrayList<Course> coursesTaught = new ArrayList<>();
 
-        for (Course c : coursesMainList) {
+        for (Course c : coursesList) {
             Faculty faculty = c.getFaculty();
 
             if (faculty != null && faculty.getFacultyId() == fId) {
