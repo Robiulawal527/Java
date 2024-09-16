@@ -12,7 +12,7 @@ public class Main {
         while (true) {
             System.out.println();
             System.out.println("1. Add\n2. Delete\n3. Update\n4. Print\n5. Search\n0. Exit");
-            System.out.print("Enter option: ");
+            System.out.print("Enter your choice: ");
             int choice = input.nextInt();
 
             if (choice == 0) {
@@ -38,9 +38,11 @@ public class Main {
                 } else if (choice1 == 'a') {
                     System.out.println("ID: ");
                     int id = input.nextInt();
+                    input.nextLine();
 
                     System.out.println("Name: ");
-                    String name = input.next();
+                    String name = input.nextLine();
+
 
                     System.out.println("CGPA: ");
                     double cg = input.nextDouble();
@@ -51,9 +53,10 @@ public class Main {
                 } else if (choice1 == 'b') {
                     System.out.println("ID: ");
                     int id = input.nextInt();
+                    input.nextLine();
 
                     System.out.println("Name: ");
-                    String name = input.next();
+                    String name = input.nextLine();
 
                     System.out.println("Position: ");
                     String position = input.next();
@@ -64,9 +67,10 @@ public class Main {
                 } else if (choice1 == 'c') {
                     System.out.println("Course code: ");
                     String code = input.next();
+                    input.nextLine();
 
                     System.out.println("Course title: ");
-                    String name = input.next();
+                    String name = input.nextLine();
 
                     System.out.println("Credit: ");
                     double cred = input.nextDouble();
@@ -77,6 +81,7 @@ public class Main {
                 } else if (choice1 == 'd') {
                     System.out.println("Course code: ");
                     String courseCode = input.next();
+                    input.nextLine();
 
                     System.out.println("Student ID: ");
                     int sid = input.nextInt();
@@ -86,6 +91,7 @@ public class Main {
                 } else if (choice1 == 'e') {
                     System.out.println("Course code: ");
                     String courseCode = input.next();
+                    input.nextLine();
 
                     System.out.println("Faculty ID: ");
                     int fid = input.nextInt();
