@@ -11,9 +11,17 @@ public class Main {
     public static void main(String[] args) {
         while (true) {
 
-            System.out.println("University Management System");
-
-            System.out.println("1. Add student or faculty or course or student to a course or faculty to a course.\n2. Delete\n3. Update\n4. Print\n5. Search\n0. Exit");
+            System.out.println("*************************University Management System**********************************");
+            System.out.println();
+            System.out.println("1. Add  a (student / faculty / course / student to a course / faculty to a course.)");
+            System.out.println("2. Delete a (student / faculty / course / student from a course / faculty from a course.)");
+            System.out.println("3. Update a (student / faculty / course / student to a course / faculty to a course.)");
+            System.out.println("4. Print ");
+            System.out.println("5. Search");
+            System.out.println("0. Exit");
+            
+            System.out.println();
+            System.out.println("*************************University Management System**********************************");
 
             System.out.print("Enter your choice: ");
 
