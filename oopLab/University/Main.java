@@ -13,13 +13,13 @@ public class Main {
             System.out.println();
             System.out.println("1. Add\n2. Delete\n3. Update\n4. Print\n5. Search\n0. Exit");
             System.out.print("Enter option: ");
-            int ip = input.nextInt();
+            int choice = input.nextInt();
 
-            if (ip == 0) {
+            if (choice == 0) {
                 break;
             }
 
-            if (ip == 1) {
+            if (choice == 1) {
                 System.out.println();
                 System.out.println("""
                         a. Add a student
@@ -30,12 +30,12 @@ public class Main {
                         x. Return to main menu""");
 
                 System.out.print("Enter any option: ");
-                char ip1 = input.next().charAt(0);
+                char choice1 = input.next().charAt(0);
 
-                if (ip1 == 'x') {
+                if (choice1 == 'x') {
                     continue;
 
-                } else if (ip1 == 'a') {
+                } else if (choice1 == 'a') {
                     System.out.println("ID: ");
                     int id = input.nextInt();
 
@@ -48,7 +48,7 @@ public class Main {
                     Student s = new Student(id, name, cg);
                     addAStudent(s, s.getStudentId());
 
-                } else if (ip1 == 'b') {
+                } else if (choice1 == 'b') {
                     System.out.println("ID: ");
                     int id = input.nextInt();
 
@@ -61,7 +61,7 @@ public class Main {
                     Faculty f = new Faculty(id, name, position);
                     addAFaculty(f, f.getFacultyId());
 
-                } else if (ip1 == 'c') {
+                } else if (choice1 == 'c') {
                     System.out.println("Course code: ");
                     String code = input.next();
 
@@ -74,7 +74,7 @@ public class Main {
                     Course c = new Course(code, name, cred);
                     addACourse(c, c.getCourseCode());
 
-                } else if (ip1 == 'd') {
+                } else if (choice1 == 'd') {
                     System.out.println("Course code: ");
                     String courseCode = input.next();
 
@@ -83,7 +83,7 @@ public class Main {
 
                     addAStudentToACourse(courseCode, sid);
 
-                } else if (ip1 == 'e') {
+                } else if (choice1 == 'e') {
                     System.out.println("Course code: ");
                     String courseCode = input.next();
 
@@ -95,7 +95,7 @@ public class Main {
                     System.out.println("\nEnter valid input");
                 }
 
-            } else if (ip == 2) {
+            } else if (choice == 2) {
                 System.out.println();
                 System.out.println("""
                         a. Delete a student
@@ -106,34 +106,34 @@ public class Main {
                         x. Return to main menu""");
 
                 System.out.print("Enter any option: ");
-                char ip2 = input.next().charAt(0);
+                char choice2 = input.next().charAt(0);
 
-                if (ip2 == 'x') {
+                if (choice2 == 'x') {
                     continue;
 
-                } else if (ip2 == 'a') {
+                } else if (choice2 == 'a') {
                     System.out.println("Enter student id that you want to delete: ");
                     int sid = input.nextInt();
                     deleteAStudent(sid);
 
-                } else if (ip2 == 'b') {
+                } else if (choice2 == 'b') {
                     System.out.println("Enter course code that you want to delete: ");
                     String courseCode = input.next();
                     deleteACourse(courseCode);
 
-                } else if (ip2 == 'c') {
+                } else if (choice2 == 'c') {
                     System.out.println("Enter faculty id that you want to delete: ");
                     int fId = input.nextInt();
                     deleteAFaculty(fId);
 
-                } else if (ip2 == 'd') {
+                } else if (choice2 == 'd') {
                     System.out.println("Enter course code to delete student from course: ");
                     String cCode = input.next();
                     System.out.println("Enter student id to delete student from course: ");
                     int sID = input.nextInt();
                     deleteAStudentFromCourse(cCode, sID);
 
-                } else if (ip2 == 'e') {
+                } else if (choice2 == 'e') {
                     System.out.println("Enter course code to remove a faculty: ");
                     String cCode = input.next();
                     deleteAFacultyFromCourse(cCode);
@@ -141,7 +141,7 @@ public class Main {
                     System.out.println("\nEnter valid input");
                 }
 
-            } else if (ip == 3) {
+            } else if (choice == 3) {
                 System.out.println();
                 System.out.println("""
                         a. Update a student
@@ -152,27 +152,27 @@ public class Main {
                         x. Return to main menu""");
 
                 System.out.print("Enter any option: ");
-                char ip3 = input.next().charAt(0);
+                char choice3 = input.next().charAt(0);
 
-                if (ip3 == 'x') {
+                if (choice3 == 'x') {
                     continue;
 
-                } else if (ip3 == 'a') {
+                } else if (choice3 == 'a') {
                     System.out.println("Enter student id to update info: ");
                     int sId = input.nextInt();
                     updateAStudent(sId);
 
-                } else if (ip3 == 'b') {
+                } else if (choice3 == 'b') {
                     System.out.println("Enter faculty id to update info: ");
                     int fId = input.nextInt();
                     updateAFaculty(fId);
 
-                } else if (ip3 == 'c') {
+                } else if (choice3 == 'c') {
                     System.out.println("Enter course code to update info: ");
                     String cCode = input.next();
                     updateACourse(cCode);
 
-                } else if (ip3 == 'd') {
+                } else if (choice3 == 'd') {
                     System.out.println("Enter course code to update a student from a course: ");
                     String cCode = input.next();
 
@@ -180,7 +180,7 @@ public class Main {
                     int sId = input.nextInt();
                     updateAStudentToACourse(cCode, sId);
 
-                } else if (ip3 == 'e') {
+                } else if (choice3 == 'e') {
                     System.out.println("Enter course code to update a faculty to a course: ");
                     String cCode = input.next();
                     updateAFacultyToACourse(cCode);
@@ -189,7 +189,7 @@ public class Main {
                     System.out.println("\nEnter valid input");
                 }
 
-            } else if (ip == 4) {
+            } else if (choice == 4) {
                 System.out.println();
                 System.out.println("""
                         a. Print all students
@@ -203,39 +203,39 @@ public class Main {
                         x. Return to main menu""");
 
                 System.out.print("Enter any option: ");
-                char ip4 = input.next().charAt(0);
+                char choice4 = input.next().charAt(0);
 
-                if (ip4 == 'x') {
+                if (choice4 == 'x') {
                     continue;
 
-                } else if (ip4 == 'a') {
+                } else if (choice4 == 'a') {
                     printAllStudent();
 
-                } else if (ip4 == 'b') {
+                } else if (choice4 == 'b') {
                     printAllCourse();
 
-                } else if (ip4 == 'c') {
+                } else if (choice4 == 'c') {
                     printAllFaculty();
 
-                } else if (ip4 == 'd') {
+                } else if (choice4 == 'd') {
                     System.out.print("Enter student id to see her/him information: ");
                     int stuId = input.nextInt();
                     printInfoOfAStudent(stuId);
 
-                } else if (ip4 == 'e') {
+                } else if (choice4 == 'e') {
                     System.out.print("Enter course code to see its information: ");
                     String courseCode = input.next();
                     printInfoOfACourse(courseCode);
 
-                } else if (ip4 == 'f') {
+                } else if (choice4 == 'f') {
                     System.out.print("Enter faculty id to see her/him information: ");
                     int fId = input.nextInt();
                     printInfoOfAFaculty(fId);
 
-                } else if (ip4 == 'g') {
+                } else if (choice4 == 'g') {
                     printStudentListAndFacultyInfo();
 
-                } else if (ip4 == 'h') {
+                } else if (choice4 == 'h') {
                     System.out.println("Enter student id to see her/him courses: ");
                     int sid = input.nextInt();
                     printCourseTakenByStudent(sid);
@@ -244,7 +244,7 @@ public class Main {
                     System.out.println("\nEnter valid input");
                 }
 
-            } else if (ip == 5) {
+            } else if (choice == 5) {
                 System.out.println();
                 System.out.println("""
                         a. Search a students
@@ -257,12 +257,12 @@ public class Main {
                         x. Return to main menu""");
 
                 System.out.print("Enter any option: ");
-                char ip5 = input.next().charAt(0);
+                char choice5 = input.next().charAt(0);
 
-                if (ip5 == 'x') {
+                if (choice5 == 'x') {
                     continue;
 
-                } else if (ip5 == 'a') {
+                } else if (choice5 == 'a') {
                     System.out.println("Enter student id to search: ");
                     int sId = input.nextInt();
                     Student ans = searchStudent(sId);
@@ -275,7 +275,7 @@ public class Main {
                         System.out.println("Student not found");
                     }
 
-                } else if (ip5 == 'b') {
+                } else if (choice5 == 'b') {
                     System.out.println("Enter course code to search: ");
                     String cCode = input.next();
                     Course ans = searchCourse(cCode);
@@ -288,7 +288,7 @@ public class Main {
                         System.out.println("Course not found");
                     }
 
-                } else if (ip5 == 'c') {
+                } else if (choice5 == 'c') {
                     System.out.println("Enter faculty id to search: ");
                     int fId = input.nextInt();
                     Faculty ans = searchFaculty(fId);
@@ -301,7 +301,7 @@ public class Main {
                         System.out.println("Faculty not found");
                     }
 
-                } else if (ip5 == 'd') {
+                } else if (choice5 == 'd') {
                     System.out.println("Enter student id to search whether a student takes a course: ");
                     int sId = input.nextInt();
 
@@ -316,7 +316,7 @@ public class Main {
                         System.out.println("No student found");
                     }
 
-                } else if (ip5 == 'e') {
+                } else if (choice5 == 'e') {
                     System.out.println("Enter faculty id to search whether a student takes a course: ");
                     int fId = input.nextInt();
 
@@ -331,7 +331,7 @@ public class Main {
                         System.out.println("No faculty found");
                     }
 
-                } else if (ip5 == 'f') {
+                } else if (choice5 == 'f') {
                     System.out.println("Enter student id to search courses taken by a student: ");
                     int sId = input.nextInt();
                     ArrayList<Course> ans = searchCoursesTakenByStudent(sId);
@@ -347,7 +347,7 @@ public class Main {
                         System.out.println("No course found");
                     }
 
-                } else if (ip5 == 'g') {
+                } else if (choice5 == 'g') {
                     System.out.println("Enter faculty id to search course taught by a faculty: ");
                     int fId = input.nextInt();
                     ArrayList<Course> ans = searchCoursesTaughtByFaculty(fId);
