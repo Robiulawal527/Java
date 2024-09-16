@@ -212,60 +212,70 @@ public class Main {
                 break;
 
             case 4:
-                System.out.println();
-                System.out.println("""
-                    a. Print all students
-                    b. Print all courses
-                    c. Print all faculties
-                    d. Print information of a student
-                    e. Print information of a course
-                    f. Print information of a faculty
-                    g. Print student list and faculty information of a course
-                    h. Print courses taken by a student
-                    x. Return to main menu""");
+                    System.out.println();
+                    System.out.println("""
+                        a. Print all students
+                        b. Print all courses
+                        c. Print all faculties
+                        d. Print information of a student
+                        e. Print information of a course
+                        f. Print information of a faculty
+                        g. Print student list and faculty information of a course
+                        h. Print courses taken by a student
+                        x. Return to main menu""");
 
-                System.out.print("Enter any option: ");
-                char choice4 = input.next().charAt(0);
+                    System.out.print("Enter any option: ");
+                    char choice4 = input.next().charAt(0);
 
-                if (choice4 == 'x') {
-                continue;
+                    switch (choice4) {
+                        case 'x':
+                            continue;
 
-                } else if (choice4 == 'a') {
-                printAllStudent();
+                        case 'a':
+                            printAllStudent();
+                            break;
 
-                } else if (choice4 == 'b') {
-                printAllCourse();
+                        case 'b':
+                            printAllCourse();
+                            break;
 
-                } else if (choice4 == 'c') {
-                printAllFaculty();
+                        case 'c':
+                            printAllFaculty();
+                            break;
 
-                } else if (choice4 == 'd') {
-                System.out.print("Enter student id to see her/him information: ");
-                int stuId = input.nextInt();
-                printInfoOfAStudent(stuId);
+                        case 'd':
+                            System.out.print("Enter student id to see her/him information: ");
+                            int stuId = input.nextInt();
+                            printInfoOfAStudent(stuId);
+                            break;
 
-                } else if (choice4 == 'e') {
-                System.out.print("Enter course code to see its information: ");
-                String courseCode = input.next();
-                printInfoOfACourse(courseCode);
+                        case 'e':
+                            System.out.print("Enter course code to see its information: ");
+                            String courseCode = input.next();
+                            printInfoOfACourse(courseCode);
+                            break;
 
-                } else if (choice4 == 'f') {
-                System.out.print("Enter faculty id to see her/him information: ");
-                int fId = input.nextInt();
-                printInfoOfAFaculty(fId);
+                        case 'f':
+                            System.out.print("Enter faculty id to see her/him information: ");
+                            int fId = input.nextInt();
+                            printInfoOfAFaculty(fId);
+                            break;
 
-                } else if (choice4 == 'g') {
-                printStudentListAndFacultyInfo();
+                        case 'g':
+                            printStudentListAndFacultyInfo();
+                            break;
 
-                } else if (choice4 == 'h') {
-                System.out.println("Enter student id to see her/him courses: ");
-                int sid = input.nextInt();
-                printCourseTakenByStudent(sid);
+                        case 'h':
+                            System.out.println("Enter student id to see her/him courses: ");
+                            int sid = input.nextInt();
+                            printCourseTakenByStudent(sid);
+                            break;
 
-                } else {
-                System.out.println("\nEnter valid input");
-                }
-                break;
+                        default:
+                            System.out.println("\nEnter valid input");
+                            break;
+                    }
+                    break;
 
             case 5:
                 System.out.println();
