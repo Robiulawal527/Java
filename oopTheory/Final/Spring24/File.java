@@ -11,7 +11,7 @@ public class File {
 
     try {
 
-        BufferedReader reader = new BufferedReader(new FileReader(input.txt));
+        BufferedReader reader = new BufferedReader(new FileReader(input.txt))
 
         String line;
 
@@ -32,7 +32,7 @@ public class File {
         reader.close();
 
 
-    BufferedWriter writer = new BufferedWriter(new FileWriter(Output.txt));
+    BufferedWriter writer = new BufferedWriter(new FileWriter(output.txt));
 
     try {
         if (minValue != Integer.MAX_VALUE){
