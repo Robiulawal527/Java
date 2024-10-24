@@ -8,84 +8,145 @@ public class Main {
     public static ArrayList<University> universities = new ArrayList<>();
 
     public static void main(String[] args) {
+        boolean running = true;
 
-        //Public university
-        for (int i = 0; i < 3; i++) {
+        while (running) {
+            // Show menu options
+            System.out.println("\n--- University Management Menu ---");
+            System.out.println("1. Add Public University");
+            System.out.println("2. Add Private University");
+            System.out.println("3. List UGC Approved Universities");
+            System.out.println("4. List Universities Where Politics are Not Allowed");
+            System.out.println("5. Find Universities by Address");
+            System.out.println("6. Show All University Details");
+            System.out.println("0. Exit");
+            System.out.print("Enter your choice: ");
+            
+            int choice = input.nextInt();
+            input.nextLine(); // Clear the newline
 
-            System.out.println("Enter Public University details:");
-            input.nextLine();
-            System.out.print("Name: ");
-            String name = input.nextLine();
-            System.out.print("Address: ");
-            String address = input.nextLine();
-            System.out.print("Establishment Year: ");
-            int year = input.nextInt();
-            System.out.print("Number of Departments: ");
-            int departments = input.nextInt();
-            System.out.print("Number of Halls: ");
-            int halls = input.nextInt();
-            System.out.print("Politics Allowed (true/false): ");
-            boolean politics = input.nextBoolean();
+            // Switch case to handle each menu choice
+            switch (choice) {
+                case 1:
+                    System.out.println("Adding a Public University...");
+                    
+                     //Public university
+                    for (int i = 0; i < 3; i++) {
 
-            University publicUni = new PublicUniversity(name, address, year, departments, halls, politics);
-            universities.add(publicUni);
-        }
+                        System.out.println("Enter Public University details:");
+                        input.nextLine();
+                        System.out.print("Name: ");
+                        String name = input.nextLine();
+                        System.out.print("Address: ");
+                        String address = input.nextLine();
+                        System.out.print("Establishment Year: ");
+                        int year = input.nextInt();
+                        System.out.print("Number of Departments: ");
+                        int departments = input.nextInt();
+                        System.out.print("Number of Halls: ");
+                        int halls = input.nextInt();
+                        System.out.print("Politics Allowed (true/false): ");
+                        boolean politics = input.nextBoolean();
 
-        // Private university
-        for (int i = 0; i < 3; i++) {
-            System.out.println("Enter Private University details:");
-            input.nextLine();
-            System.out.print("Name: ");
-            String name = input.nextLine();
-            System.out.print("Address: ");
-            String address = input.nextLine();
-            System.out.print("Establishment Year: ");
-            int year = input.nextInt();
-            System.out.print("Number of Departments: ");
-            int departments = input.nextInt();
-            System.out.print("UGC Approved (true/false): ");
-            boolean ugcApproved = input.nextBoolean();
-            System.out.print("Number of Trustee Members: ");
-            int trustees = input.nextInt();
+                        University publicUni = new PublicUniversity(name, address, year, departments, halls, politics);
+                        universities.add(publicUni);
+                    }
 
-            University privateUni = new PrivateUniversity(name, address, year, departments, ugcApproved, trustees);
-            universities.add(privateUni);
-        }
+                    
 
-        // Sorting universities
-        Collections.sort(universities);
+                    break;
+                case 2:
+                    System.out.println("Adding a Private University...");
+                    
+                     // Private university
+                    for (int i = 0; i < 3; i++) {
+                        System.out.println("Enter Private University details:");
+                        input.nextLine();
+                        System.out.print("Name: ");
+                        String name = input.nextLine();
+                        System.out.print("Address: ");
+                        String address = input.nextLine();
+                        System.out.print("Establishment Year: ");
+                        int year = input.nextInt();
+                        System.out.print("Number of Departments: ");
+                        int departments = input.nextInt();
+                        System.out.print("UGC Approved (true/false): ");
+                        boolean ugcApproved = input.nextBoolean();
+                        System.out.print("Number of Trustee Members: ");
+                        int trustees = input.nextInt();
 
-        // Printing UGC approved universities
-        System.out.println("UGC Approved Universities:");
-        for (University uni : universities) {
-            if (uni.isUgcApproved()) {
-                System.out.println(uni);
+                        University privateUni = new PrivateUniversity(name, address, year, departments, ugcApproved, trustees);
+                        universities.add(privateUni);
+                    }
+
+                    break;
+
+                case 3:
+                    System.out.println("Listing UGC Approved Universities...");
+                    
+                     // Sorting universities
+                    Collections.sort(universities);
+
+                    // Printing UGC approved universities
+                    System.out.println("UGC Approved Universities:");
+                    for (University uni : universities) {
+                        if (uni.isUgcApproved()) {
+                            System.out.println(uni);
+                        }
+                    }
+
+                    break;
+
+                case 4:
+                    System.out.println("Listing Universities Where Politics are Not Allowed...");
+                    
+                    // Printing universities where politics are not allowed
+                    System.out.println("Universities where politics are not allowed:");
+                    for (University uni : universities) {
+                        if (!uni.isPoliticsAllowed()) {
+                            System.out.println(uni);
+                        }
+                    }
+
+                    break;
+
+                case 5:
+                    System.out.print("Enter an address to search: ");
+                    String address = input.nextLine();
+                    System.out.println("Finding Universities at " + address + "...");
+
+                    // Taking address input and displaying universities from that address
+                    System.out.print("Enter an address to find universities from that address: ");
+                    String inputAddress = input.nextLine();
+                    System.out.println("Universities from " + inputAddress + ":");
+                    for (University uni : universities) {
+                        if (uni.getAddress().equals(inputAddress)) {
+                            System.out.println(uni);
+                        }
+                    }
+                    
+                    break;
+                case 6:
+                    System.out.println("Showing All University Details...");
+
+                    // Printing details of all universities
+                    System.out.println("Details of all universities:");
+                    for (University uni : universities) {
+                        System.out.println("University type: " + uni.getUniversityType());
+                        System.out.println("University details: " + uni);
+                    }
+                    
+                    break;
+                case 0:
+                    System.out.println("Exiting the program. Goodbye!");
+                    running = false; 
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
             }
-        }
-
-        // Printing universities where politics are not allowed
-        System.out.println("Universities where politics are not allowed:");
-        for (University uni : universities) {
-            if (!uni.isPoliticsAllowed()) {
-                System.out.println(uni);
-            }
-        }
-
-        // Taking address input and displaying universities from that address
-        System.out.print("Enter an address to find universities from that address: ");
-        String inputAddress = input.nextLine();
-        System.out.println("Universities from " + inputAddress + ":");
-        for (University uni : universities) {
-            if (uni.getAddress().equals(inputAddress)) {
-                System.out.println(uni);
-            }
-        }
-
-        // Printing details of all universities
-        System.out.println("Details of all universities:");
-        for (University uni : universities) {
-            System.out.println("University type: " + uni.getUniversityType());
-            System.out.println("University details: " + uni);
         }
     }
 }
+
+
+

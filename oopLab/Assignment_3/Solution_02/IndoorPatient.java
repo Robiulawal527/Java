@@ -50,9 +50,10 @@ public class IndoorPatient extends Patient {
     @Override
     public double getInvoice() {
         System.out.println("Enter number of days admit in hospital: ");
-        Scanner input = new Scanner(System.in);
-        int numberOfDays = input.nextInt();
-        double totalBill = numberOfDays * getDailyFee();
-        return totalBill;
+        try (Scanner input = new Scanner(System.in)) {
+            int numberOfDays = input.nextInt();
+            double totalBill = numberOfDays * getDailyFee();
+            return totalBill;
+        }
     }
 }

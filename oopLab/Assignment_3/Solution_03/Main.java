@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -9,82 +8,103 @@ public class Main {
     public static ArrayList<Employee> employees = new ArrayList<>();
 
     public static void main(String[] args) {
+        boolean running = true;
 
-        // full-time employee
-        for (int i = 0; i < 3; i++) {
-            System.out.println("Enter name: ");
-            String name = input.nextLine();
-            System.out.println("Enter id: ");
-            int id = input.nextInt();
-            System.out.println("Enter birth day in integer: ");
-            int day = input.nextInt();
-            System.out.println("Enter birth month in integer: ");
-            int month = input.nextInt();
-            System.out.println("Enter birth year in integer: ");
-            int year = input.nextInt();
-            System.out.println("Enter monthly salary: ");
-            double monthlySalary = input.nextDouble();
+        while (running) {
+            System.out.println("Menu:");
+            System.out.println("1. Add Full-time Employee");
+            System.out.println("2. Add Part-time Employee");
+            System.out.println("3. Display All Employees");
+            System.out.println("4. Print Employees by Birth Year");
+            System.out.println("5. Exit");
+            System.out.print("Please select an option (1-5): ");
 
-            input.nextLine();
+            int choice = input.nextInt();
+            input.nextLine(); // Clear the buffer
 
-            Employee fullTimeEmp = new FulltimeEmployee(name, id, day, month, year, monthlySalary);
-
-            int flag = 0;
-            for (Employee e : employees) {
-                if (isEmployeeIdExist(e.getId())) {
-                    flag = 1;
+            switch (choice) {
+                case 1:
+                    addFullTimeEmployee();
                     break;
-                }
-            }
-            if (flag == 0) {
-                employees.add(fullTimeEmp);
+                case 2:
+                    addPartTimeEmployee();
+                    break;
+                case 3:
+                    displayAllEmployees();
+                    break;
+                case 4:
+                    printEmployeesByBirthYearInput();
+                    break;
+                case 5:
+                    running = false;
+                    System.out.println("Exiting the program.");
+                    break;
+                default:
+                    System.out.println("Invalid option. Please select again.");
             }
         }
+    }
 
-        // part-time employee
-        for (int i = 0; i < 3; i++) {
-            System.out.println("Enter name: ");
-            String name = input.nextLine();
-            System.out.println("Enter id: ");
-            int id = input.nextInt();
-            System.out.println("Enter birth day in integer: ");
-            int day = input.nextInt();
-            System.out.println("Enter birth month in integer: ");
-            int month = input.nextInt();
-            System.out.println("Enter birth year in integer: ");
-            int year = input.nextInt();
-            System.out.println("Enter work hour: ");
-            int hr = input.nextInt();
-            System.out.println("Enter hourly rate: ");
-            double hrRate = input.nextDouble();
+    private static void addFullTimeEmployee() {
+        System.out.println("Enter name: ");
+        String name = input.nextLine();
+        System.out.println("Enter id: ");
+        int id = input.nextInt();
+        System.out.println("Enter birth day in integer: ");
+        int day = input.nextInt();
+        System.out.println("Enter birth month in integer: ");
+        int month = input.nextInt();
+        System.out.println("Enter birth year in integer: ");
+        int year = input.nextInt();
+        System.out.println("Enter monthly salary: ");
+        double monthlySalary = input.nextDouble();
+        input.nextLine(); // Clear the buffer
 
-            input.nextLine();
+        Employee fullTimeEmp = new FulltimeEmployee(name, id, day, month, year, monthlySalary);
+        addEmployee(fullTimeEmp);
+    }
 
-            Employee partTimeEmp = new ParttimeEmployee(name, id, day, month, year, hr, hrRate);
+    private static void addPartTimeEmployee() {
+        System.out.println("Enter name: ");
+        String name = input.nextLine();
+        System.out.println("Enter id: ");
+        int id = input.nextInt();
+        System.out.println("Enter birth day in integer: ");
+        int day = input.nextInt();
+        System.out.println("Enter birth month in integer: ");
+        int month = input.nextInt();
+        System.out.println("Enter birth year in integer: ");
+        int year = input.nextInt();
+        System.out.println("Enter work hour: ");
+        int hr = input.nextInt();
+        System.out.println("Enter hourly rate: ");
+        double hrRate = input.nextDouble();
+        input.nextLine(); // Clear the buffer
 
-            int flag = 0;
-            for (Employee e : employees) {
-                if (isEmployeeIdExist(e.getId())) {
-                    flag = 1;
-                    break;
-                }
-            }
-            if (flag == 0) {
-                employees.add(partTimeEmp);
-            }
+        Employee partTimeEmp = new ParttimeEmployee(name, id, day, month, year, hr, hrRate);
+        addEmployee(partTimeEmp);
+    }
+
+    private static void addEmployee(Employee employee) {
+        if (!isEmployeeIdExist(employee.getId())) {
+            employees.add(employee);
+            System.out.println("Employee added successfully.");
+        } else {
+            System.out.println("Employee ID already exists. Please try again.");
         }
+    }
 
-        // sort employee by salary
+    private static void displayAllEmployees() {
         Collections.sort(employees);
-
         for (Employee e : employees) {
             System.out.println("Employee type: " + e.getEmployeeType());
             System.out.println("Print Details: " + e);
             System.out.println("Salary: " + e.getSalary());
         }
+    }
 
-        // Print all the employee info having the same birth year
-        System.out.println("Enter birth year toh find employee info: ");
+    private static void printEmployeesByBirthYearInput() {
+        System.out.println("Enter birth year to find employee info: ");
         int birthYear = input.nextInt();
         printEmployeesByBirthYear(birthYear);
     }
